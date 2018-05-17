@@ -5,7 +5,8 @@ def wsgi_application(environ, start_response):
     body = ''
     for i in params:
         body += params[i][0] + '\n'
-    
+    body = bytes(body, encoding = 'utf-8')
+
     status = '200 OK'
     headers = [
             ('Content-Type', 'text/plain')
