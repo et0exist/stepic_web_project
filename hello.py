@@ -1,6 +1,6 @@
 def wsgi_application(environ, start_response):
     
-    body = [bytes(i, encoding = 'utf-8') for i in environ['QUERY_STRING'].split(sep='&')]
+    body = [bytes(i + '\n', encoding = 'utf-8') for i in environ['QUERY_STRING'].split(sep='&')]
     
     status = '200 OK'
     headers = [
