@@ -7,7 +7,6 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
-
 def home(request, *args, **kwargs):
     return HttpResponse('Home page')
 
@@ -30,6 +29,7 @@ def popular(request, *args, **kwargs):
 
 def new(request, *args, **kwargs):
     return HttpResponse('New page')
+
 
 def question(request, *args, **kwargs):
     return HttpResponse('Question {}'.format(' '.join(request.path.split('/')[2:])))
