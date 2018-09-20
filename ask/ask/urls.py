@@ -26,4 +26,5 @@ urlpatterns = [
     re_path(r'^popular/$', views.popular),
     re_path(r'^new/$', views.new),
     re_path(r'^question/', views.question),
+    re_path(r'^test/', views.test),
 ]

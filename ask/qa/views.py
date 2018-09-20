@@ -8,6 +8,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
+def test(request, *args, **kwargs):
+    return HttpResponse('OK')
+
+
 def home(request, *args, **kwargs):
     return HttpResponse('Home page')
 
@@ -33,4 +37,6 @@ def new(request, *args, **kwargs):
 
 
 def question(request, *args, **kwargs):
-    return HttpResponse('Question {}'.format(' '.join(request.path.split('/')[2:])))
+    return HttpResponse(
+        'Question {}'.format(' '.join(request.path.split('/')[2:]))
+    )
