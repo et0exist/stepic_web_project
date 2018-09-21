@@ -25,7 +25,7 @@ SECRET_KEY = 'w_%!n-^@j_7m%-had+4$do643^&n%mf@6i7+j-j_q!0z+ij1nt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'qa',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ask',
+        'USER': 'stepic',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': ''
     }
 }
 
