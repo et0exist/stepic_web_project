@@ -1,3 +1,4 @@
+#!/usr/bin/python
 """
 WSGI config for ask project.
 

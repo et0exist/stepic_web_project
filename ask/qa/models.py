@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 
 class QuestionManager(models.Manager):
@@ -8,7 +9,7 @@ class QuestionManager(models.Manager):
         return super(QuestionManager, self).get_queryset().order_by('-added_at')
 
     def popular(self):
-        return super(QuestionManager, self).get_queryset().order_by('rating')
+        return super(QuestionManager, self).get_queryset().order_by('-rating')
 
 
 class Question(models.Model):
@@ -18,12 +19,13 @@ class Question(models.Model):
     rating = models.IntegerField(default=0)
     author = models.ForeignKey(User)
     likes = models.ManyToManyField(User, related_name='likes_set')
-    object = QuestionManager()
+    objects = QuestionManager()
 
     def __str__(self):
         return self.title
 
     def get_url(self):
+        # return reverse('new', kwargs={'slug': self.slug})
         return '/question/{}/'.format(self.id)
 
 
