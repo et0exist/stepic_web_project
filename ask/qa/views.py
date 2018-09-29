@@ -51,7 +51,8 @@ def get_question(request, slug):
             return HttpResponseRedirect(url)
     else:
         form = AnswerForm()
-        return render_to_response(
+        return render(
+            request,
             'question.html',
             {
                 'question': question,
@@ -69,7 +70,7 @@ def ask(request):
             return HttpResponseRedirect(url)
     else:
         form = AskForm()
-    return render_to_response('ask.html', {'form': form})
+    return render(request, 'ask.html', {'form': form})
 
 
 def popular(request):
