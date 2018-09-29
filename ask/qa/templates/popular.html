@@ -5,6 +5,7 @@
 <a href="{% url 'ask' %}">Ask</a>
 <a href="{% url 'popular' %}">Popular</a>
 <a href="{% url 'new' %}">New</a>
+<hr>
 
 {% for p in questions %}
     <hr>{{ p.title }}

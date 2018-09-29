@@ -13,7 +13,7 @@ class QuestionManager(models.Manager):
 
 
 class Question(models.Model):
-    title = models.CharField(max_length=140)
+    title = models.CharField(max_length=255)
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
@@ -25,8 +25,7 @@ class Question(models.Model):
         return self.title
 
     def get_url(self):
-        # return reverse('new', kwargs={'slug': self.slug})
-        return '/question/{}/'.format(self.id)
+        return reverse('question', args=(self.id,))
 
 
 class Answer(models.Model):
@@ -37,3 +36,6 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.text
+
+    def get_url(self):
+        return reverse('question', args=(self.question_id,))

@@ -6,13 +6,9 @@
 <a href="{% url 'popular' %}">Popular</a>
 <a href="{% url 'new' %}">New</a>
 <hr>
-
-{{ question.title }}
-<br>{{ question.text }}
-<hr>
 {% if form.errors %}
     <p style="color: red;">
-        Please correct the error{{ form.errors }} below.
+        Please correct the error{{  form.errors }} below.
     </p>
 {% endif %}
 
@@ -22,9 +18,3 @@
     </table>
     <input type="submit" value="Submit">
 </form>
-
-<hr>
-{% for answer in question.answer_set.all %}
-    {{ answer.text }}
-    <hr>
-{% endfor %}
