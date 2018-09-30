@@ -51,14 +51,14 @@ def get_question(request, slug):
             return HttpResponseRedirect(url)
     else:
         form = AnswerForm()
-        return render(
-            request,
-            'question.html',
-            {
-                'question': question,
-                'form': form
-            }
-        )
+    return render(
+        request,
+        'question.html',
+        {
+            'question': question,
+            'form': form
+        }
+    )
 
 
 def ask(request):
