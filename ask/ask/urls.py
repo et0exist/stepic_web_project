@@ -10,5 +10,4 @@ urlpatterns = [
     url(r'^question/(?P<slug>\w+)/$', views.get_question, name='question'),
     url(r'^ask/', views.ask, name='ask'),
     url(r'^popular/', views.popular, name='popular'),
-    url(r'^new/', views.new, name='new'),
 ]

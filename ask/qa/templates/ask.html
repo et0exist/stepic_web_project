@@ -4,9 +4,9 @@
 <a href="{% url 'question' 1 %}">Question</a>
 <a href="{% url 'ask' %}">Ask</a>
 <a href="{% url 'popular' %}">Popular</a>
-<a href="{% url 'new' %}">New</a>
 <hr>
 <hr>
+
 {% if form.errors %}
     <p style="color: red;">
         Please correct the error{{  form.errors }} below.

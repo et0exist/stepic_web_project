@@ -4,15 +4,15 @@
 <a href="{% url 'question' 1 %}">Question</a>
 <a href="{% url 'ask' %}">Ask</a>
 <a href="{% url 'popular' %}">Popular</a>
-<a href="{% url 'new' %}">New</a>
+<hr>
 <hr>
 
 {% for p in questions %}
-    <hr>{{ p.title }}
+    {{ p.title }}
     <a href="{% url 'question' p.id %}">Show question</a>
+    <hr>
 {% endfor %}
 
-<hr>
 {% for p in paginator.page_range %}
     {% if p == page.number %}
     {% else %}

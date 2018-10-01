@@ -50,9 +50,3 @@ class SignupForm(forms.Form):
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
-
-    def clean(self):
-        return self.cleaned_data
-
-    def save(self):
-        pass

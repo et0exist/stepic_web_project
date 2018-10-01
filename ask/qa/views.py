@@ -1,17 +1,9 @@
-from django.shortcuts import render, get_object_or_404, render_to_response
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login
-from django.views.decorators.http import require_GET
-from django.http import HttpResponse, HttpResponseRedirect
-from django.http import Http404
-from qa.models import Question, Answer
+from django.http import HttpResponseRedirect
+from qa.models import Question
 from django.core.paginator import Paginator
-from django.core.urlresolvers import reverse
 from qa.forms import AskForm, AnswerForm, SignupForm, LoginForm
-from django.views.generic import ListView
-from django.template import Context, Template
-from django.core.mail import send_mail
-from django.views.decorators.csrf import csrf_protect
-from django.contrib.auth.models import User
 
 
 def home(request):
@@ -46,12 +38,12 @@ def login_(request):
     return render(request, 'login.html', {'form': form})
 
 
-# Net proverki na dubliruushegosya polzovatelya
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            login(request, user)
             return HttpResponseRedirect('/')
     else:
         form = SignupForm()
@@ -106,7 +98,3 @@ def popular(request):
             'page': page,
         }
     )
-
-
-def new(request):
-    return HttpResponse('New page')
