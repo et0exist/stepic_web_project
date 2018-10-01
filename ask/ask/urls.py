@@ -5,7 +5,7 @@ from qa import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
-    url(r'^login/', views.login, name='login'),
+    url(r'^login/', views.login_, name='login'),
     url(r'^signup/', views.signup, name='signup'),
     url(r'^question/(?P<slug>\w+)/$', views.get_question, name='question'),
     url(r'^ask/', views.ask, name='ask'),

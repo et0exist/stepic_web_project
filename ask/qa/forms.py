@@ -10,9 +10,9 @@ class AskForm(forms.Form):
     def clean(self):
         return self.cleaned_data
 
-    def save(self, author_id=1):
+    def save(self, author):
         question = Question(**self.cleaned_data)
-        question.author = User.objects.get(pk=author_id)
+        question.author = author
         question.save()
         return question
 
@@ -24,10 +24,35 @@ class AnswerForm(forms.Form):
     def clean(self):
         return self.cleaned_data
 
-    def save(self, author_id=1):
+    def save(self, author):
         data = self.cleaned_data
         data['question'] = Question.objects.get(pk=data['question'])
-        answer = Answer(**data)
-        answer.author = User.objects.get(pk=author_id)
+        answer = Answer(**self.cleaned_data)
+        answer.author = author
         answer.save()
         return answer
+
+
+class SignupForm(forms.Form):
+    username = forms.CharField()
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def clean(self):
+        return self.cleaned_data
+
+    def save(self):
+        user = User.objects.create_user(**self.cleaned_data)
+        user.save()
+        return user
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def clean(self):
+        return self.cleaned_data
+
+    def save(self):
+        pass
